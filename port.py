@@ -2,17 +2,17 @@ import socket
 import threading
 from queue import Queue
 import time
-from useful import ConsoleTool   # your helper
+from useful import ConsoleTool   
 
-# Global
+
 open_ports = []
 q = Queue()
 
-# Scan function (safe, won't hang forever)
+# Scan function 
 def portscan(target, port):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(1)   # hard timeout (1 second max)
+        s.settimeout(1)   # hard timeout 
         result = s.connect_ex((target, port))  # returns 0 if connected
         s.close()
         return result == 0
